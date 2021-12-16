@@ -13,25 +13,24 @@ import firebase from 'firebase'
 import { BlurView } from 'expo-blur';
 
 
-const MemberProfile = (props) => {
+const MemberProfile = ({route}) => {
 
-    const [info, setInfo] = useState("")
+   const {data} = route.params
+
+  const datafromQRCode = JSON.parse(data)
+  console.log(datafromQRCode.name)
+
+
+
+
     const [image, setImage] = useState("https://www.google.com/url?sa=i&url=https%3A%2F%2Fstock.adobe.com%2Fsearch%3Fk%3Dprofile&psig=AOvVaw25i-d72szxuZ1PKp5AVCg8&ust=1638575947652000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCPjQ652pxvQCFQAAAAAdAAAAABAM")
     const [imageLoading, setImageLoading] = useState(true)
 
     useEffect(() => {
                
-              firebase.firestore()
-              .collection('Profiles')
-              .get()
-              .then(querySnapshot => {
-            
-            querySnapshot.forEach(documentSnapshot => {
-             const fromfirebase =  documentSnapshot.data()
-              
-                 setInfo(fromfirebase)
+                
 
-                //  read from firebase
+                //  read image from firebase
                  let imageRef = firebase.storage().ref('uploads/photo.jpg');
                  imageRef.getDownloadURL()
                  .then((url) => {
@@ -61,18 +60,18 @@ const MemberProfile = (props) => {
                  });
                   
   
-                });
+          
   
   
               
-              });
+         
   
            
              
           }, [])
 
 
-    console.log(props);
+
     return (
         <View style = {styles.container}>
              <View style = {styles.MemberProfileImageInfoView}>
@@ -93,8 +92,8 @@ const MemberProfile = (props) => {
                 </View>
                   
                     <View style = {styles.MemberProfileInfo} >
-                        <Text style = {styles.MemberProfileName}>{info.name}</Text>
-                        <Text style = {styles.MemberProfileTitle}>{info.role}</Text>
+                        <Text style = {styles.MemberProfileName}>{datafromQRCode.name}</Text>
+                        <Text style = {styles.MemberProfileTitle}>{datafromQRCode.role}</Text>
                     </View>
               
              </View>
@@ -102,9 +101,9 @@ const MemberProfile = (props) => {
           
 
             <View style = {styles.memberOtherInfoView}>
-                <Text style = {styles.memberotherInfo}> <PhoneIcon  size = {20} name = "phone"  style= {styles.Infoicons}/> {info.number}</Text>
-                <Text style = {styles.memberotherInfo}> <MessageIcon  size = {20} name = "envelope-o"  style= {styles.Infoicons}/> {info.email} </Text>
-                <Text style = {styles.memberotherInfo}> <LocationIcon  size = {25} name = "md-location-outline"  style= {styles.Infoicons}/>{info.location}</Text>
+                <Text style = {styles.memberotherInfo}> <PhoneIcon  size = {20} name = "phone"  style= {styles.Infoicons}/> {datafromQRCode.number}</Text>
+                <Text style = {styles.memberotherInfo}> <MessageIcon  size = {20} name = "envelope-o"  style= {styles.Infoicons}/> {datafromQRCode.email} </Text>
+                <Text style = {styles.memberotherInfo}> <LocationIcon  size = {25} name = "md-location-outline"  style= {styles.Infoicons}/>{datafromQRCode.location}</Text>
                     
             </View>
         </View>

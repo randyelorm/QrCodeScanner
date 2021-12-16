@@ -11,14 +11,14 @@ const Register = ({navigation}) => {
 
     const [Image, setImage] = useState("")
    
-    const [FullName, setFullName] = useState("")
-    const [Email, setEmail,] = useState("")
-    const [PassWord, setPassword] = useState("")
-    const [PhoneNumber, setPhoneNumber] = useState("")
-    const [Role, setRole] = useState("")
-    const [Location, setLocation] = useState("")
-    const [TwitterHandle, setTwitterHandle] = useState("")
-    const [LinkedInHandle, setLinkedInHandle] = useState("")
+    const [FullName, setFullName] = useState("Randy")
+    const [Email, setEmail,] = useState("davohran@gmail.com")
+    const [PassWord, setPassword] = useState("123456")
+    const [PhoneNumber, setPhoneNumber] = useState("+23310")
+    const [Role, setRole] = useState("Software Dev")
+    const [Location, setLocation] = useState("Accra, Ghana")
+    const [TwitterHandle, setTwitterHandle] = useState("@randydavoh")
+    const [LinkedInHandle, setLinkedInHandle] = useState("Randy Davoh")
 
     const [isRegistering, setIsRegistering] = useState(false)
 

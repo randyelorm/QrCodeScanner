@@ -60,7 +60,7 @@ const [imageLoading, setImageLoading] = useState(true)
 
           
 
-        });
+              });
 
 
             
@@ -107,7 +107,6 @@ const [imageLoading, setImageLoading] = useState(true)
 
 
 
-        
 
 
     
@@ -123,8 +122,10 @@ const [imageLoading, setImageLoading] = useState(true)
             <View style = {styles.QrCodeView}>
             <QRCode 
             content= {JSON.stringify(
-                
+                info
             )}
+
+          
             
             color= "#FE2B4C"/>
 

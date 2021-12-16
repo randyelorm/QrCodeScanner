@@ -7,8 +7,8 @@ import { BlurView } from 'expo-blur';
 
 const SignIn = ({navigation}) => {
 
-    const [Email, setEmail,] = useState("")
-    const [PassWord, setPassword] = useState("")
+    const [Email, setEmail,] = useState("davohrandyelorm40@gmail.com")
+    const [PassWord, setPassword] = useState("123456")
     const [isLoading, setisLoading] = useState(false)
 
     const handleSignIn = ()=> {
